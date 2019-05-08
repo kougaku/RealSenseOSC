@@ -5,7 +5,7 @@ float tx, ty, tz, rx, ry, rz;
 
 void setup() {
   size(1400, 1000, P3D);
-  oscP5 = new OscP5(this, 7000);
+  oscP5 = new OscP5(this, 12000);
 }
 
 void draw() {

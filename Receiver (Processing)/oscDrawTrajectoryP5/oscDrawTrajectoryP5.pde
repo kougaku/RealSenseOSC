@@ -17,7 +17,7 @@ ArrayList<PVector> position = new ArrayList<PVector>();
 
 void setup() {
   size(1400, 1000, P3D);
-  oscP5 = new OscP5(this, 7000);
+  oscP5 = new OscP5(this, 12000);
   model = new RealSenseT265();
 }
 
@@ -112,7 +112,7 @@ void oscEvent(OscMessage msg) {
   rz = -euler[2];
 
   // position log
-  if ( position.size() < 10000 ) {
+  if ( position.size() < 30000 ) {
     position.add( new PVector( tx, ty, tz ) );
   }
 }

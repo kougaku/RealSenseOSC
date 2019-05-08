@@ -126,7 +126,11 @@ std::ostream& operator<<( std::ostream & os,
                 std::time_t t =
                         (unsigned long)( arg.AsTimeTagUnchecked() >> 32 );
 
-                const char *timeString = std::ctime( &t );
+				// const char* timeString = std::ctime(&t);
+				char buf[256];
+				char* timeString = (char*)buf;
+				ctime_s(timeString, sizeof(buf), &t);
+
                 size_t len = std::strlen( timeString );
 
                 // -1 to omit trailing newline from string returned by ctime()

@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 /*
 	oscpack -- Open Sound Control (OSC) packet manipulation library
     http://www.rossbencina.com/code/oscpack
@@ -360,8 +362,11 @@ OutboundPacketStream& OutboundPacketStream::operator<<( const BeginMessage& rhs 
 
     messageCursor_ = BeginElement( messageCursor_ );
 
-    std::strcpy( messageCursor_, rhs.addressPattern );
-    std::size_t rhsLength = std::strlen(rhs.addressPattern);
+	std::strcpy(messageCursor_, rhs.addressPattern);
+	//strcpy_s(messageCursor_, sizeof(messageCursor_), rhs.addressPattern);
+	
+	
+	std::size_t rhsLength = std::strlen(rhs.addressPattern);
     messageCursor_ += rhsLength + 1;
 
     // zero pad to 4-byte boundary
@@ -602,7 +607,8 @@ OutboundPacketStream& OutboundPacketStream::operator<<( const char *rhs )
     CheckForAvailableArgumentSpace( RoundUp4(std::strlen(rhs) + 1) );
 
     *(--typeTagsCurrent_) = STRING_TYPE_TAG;
-    std::strcpy( argumentCurrent_, rhs );
+	// std::strcpy(argumentCurrent_, rhs);
+	strcpy_s(argumentCurrent_, sizeof(argumentCurrent_), rhs);
     std::size_t rhsLength = std::strlen(rhs);
     argumentCurrent_ += rhsLength + 1;
 
@@ -622,8 +628,9 @@ OutboundPacketStream& OutboundPacketStream::operator<<( const Symbol& rhs )
     CheckForAvailableArgumentSpace( RoundUp4(std::strlen(rhs) + 1) );
 
     *(--typeTagsCurrent_) = SYMBOL_TYPE_TAG;
-    std::strcpy( argumentCurrent_, rhs );
-    std::size_t rhsLength = std::strlen(rhs);
+	//std::strcpy(argumentCurrent_, rhs);
+	strcpy_s(argumentCurrent_, sizeof(argumentCurrent_), rhs);
+	std::size_t rhsLength = std::strlen(rhs);
     argumentCurrent_ += rhsLength + 1;
 
     // zero pad to 4-byte boundary
