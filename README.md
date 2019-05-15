@@ -26,4 +26,13 @@ This is an example for first-person-view virtual reality application.
 ![FPV](https://user-images.githubusercontent.com/736387/57721935-5c8c2e80-76c0-11e9-974c-ca138d0c44f0.png)
 
 
-Binary Download: https://github.com/kougaku/RealSenseOSC/releases
+## Download
+Please download the latest version from releases.
+
+https://github.com/kougaku/RealSenseOSC/releases
+
+
+## Acknowledgements
+Thanks to the developers of the following projects.
+- [IntelRealSense/librealsense](https://github.com/IntelRealSense/librealsense)
+- [oscpack](http://www.rossbencina.com/code/oscpack)
